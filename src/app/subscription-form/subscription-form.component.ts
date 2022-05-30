@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http'
+
 
 @Component({
   selector: 'app-subscription-form',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscriptionFormComponent implements OnInit {
   
-  constructor() { }
+  constructor( private Http: HttpClient) { }
 
   ngOnInit(): void {
     
@@ -47,4 +49,13 @@ export class SubscriptionFormComponent implements OnInit {
 
 
 
+}
+
+onCreatePost (postData: {FirstName: string; LastName: string; Email: string; companyName: string})
+{
+  
+  this.http.post('url', postData).subscribe(responseData => {
+    console.log(responseData);
+  });
+  console.log(postData)
 }
