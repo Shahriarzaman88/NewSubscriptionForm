@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { PostsService } from './post.service';
+import { HttpService } from './post.service';
 
 
 @Component({
@@ -10,8 +10,10 @@ import { PostsService } from './post.service';
 })
 export class SubscriptionFormComponent implements OnInit {
 
-  loadedPosts: Post [] = [];
-  constructor(private Http: HttpClient, private postsService: PostsService) { }
+  
+  constructor( private httpService: HttpService) { }
+
+  
 
   ngOnInit(): void {
 
@@ -23,10 +25,32 @@ export class SubscriptionFormComponent implements OnInit {
   lastName: String;
   emailAddress: String;
   companyName: String;
+
+  createAndStorePost(){
+    let body = {
+        firstName : this.firstName,
+        lastName : this.lastName,
+        emailAddress : this.emailAddress
+
+    }
+
+  this.httpService.post("GetPortfolioList", body).subscribe({
+    next : ()=>{},
+    error : ()=>{}
+  })
 }
-createAndStorePost(postData: Post){
-  this.postsService.createAndStorePost();
+ 
 }
+
+  //createAndStorePost(){
+    //this.Http.post('url', postData).subscribe(responseData => {
+
+     // });
+     // console.log(postData)
+     // }
+
+
+
  
 
 

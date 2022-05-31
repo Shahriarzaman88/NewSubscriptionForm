@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
 import {HttpClientModule} from '@angular/common/http'
+import {HttpService}  from './subscription-form/post.service'
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {HttpClientModule} from '@angular/common/http'
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
