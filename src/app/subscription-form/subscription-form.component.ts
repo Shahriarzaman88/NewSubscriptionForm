@@ -22,8 +22,6 @@ export class SubscriptionFormComponent implements OnInit {
   lastName: String;
   emailAddress: String;
   companyName: String;
-
-
 }
 
  
