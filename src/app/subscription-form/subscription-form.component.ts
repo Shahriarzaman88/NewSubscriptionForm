@@ -10,6 +10,7 @@ import { PostsService } from './post.service';
 })
 export class SubscriptionFormComponent implements OnInit {
 
+  loadedPosts: Post [] = [];
   constructor(private Http: HttpClient, private postsService: PostsService) { }
 
   ngOnInit(): void {
@@ -23,7 +24,9 @@ export class SubscriptionFormComponent implements OnInit {
   emailAddress: String;
   companyName: String;
 }
-
+createAndStorePost(postData: Post){
+  this.postsService.createAndStorePost();
+}
  
 
 
